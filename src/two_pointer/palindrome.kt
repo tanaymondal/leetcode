@@ -1,6 +1,5 @@
 package two_pointer
 
-
 // https://leetcode.com/problems/valid-palindrome/description/
 fun main() {
     val s = "A man, a plan, a canal: Panama"

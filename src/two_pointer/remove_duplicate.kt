@@ -7,16 +7,13 @@ fun main() {
     println(removeDuplicates(nums))
 }
 
-fun removeDuplicates(nums: IntArray): Int {
+private fun removeDuplicates(nums: IntArray): Int {
 
-    var left = 0
-    val length = nums.size
-
-    for (right in 1 until length) {
-        if (nums[left] != nums[right]) {
-            left++
+    var left = 1
+    for (right in 1 until nums.size)
+        if (nums[right] != nums[left - 1]) {
             nums[left] = nums[right]
+            left++
         }
-    }
-    return ++left
+    return left
 }
