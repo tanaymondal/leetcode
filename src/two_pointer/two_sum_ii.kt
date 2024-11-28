@@ -17,10 +17,12 @@ fun findTwoSum(array: Array<Int>, target: Int): IntArray {
 
     while (left < right) {
         val total = array[left] + array[right]
-        when {
-            total == target -> return intArrayOf(++left, ++right)
-            total > target -> right--
-            else -> left++
+        if (total == target) {
+            return intArrayOf(++left, ++right)
+        } else if (total > target) {
+            right--
+        } else {
+            left++
         }
     }
     return intArrayOf()
