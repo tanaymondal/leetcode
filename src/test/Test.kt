@@ -1,11 +1,15 @@
 package test
 
 fun main() {
-    println(Height(6) square Width(6))
+    //println(Height(6) square Width(6))
 
-    printIt<String>()
+    //printIt<String>()
 
-    println(isItPalindrome(13321))
+    //println(isItPalindrome(13321))
+
+    for (index in (0 until 15).reversed()) {
+        println(index)
+    }
 }
 
 
