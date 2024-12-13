@@ -11,48 +11,36 @@ fun threeSum(nums: IntArray): List<List<Int>> {
 
     nums.sort()
 
-    val finalList = mutableListOf<List<Int>>()
-    for (index in nums.indices) {
-        val number = nums[index]
+    val list = mutableListOf<List<Int>>()
 
-        // if number is > 0, we can't have a + b + c = 0
-        if (number > 0) {
-            break
-        }
-
-        // if current number and previous number is same, then continue to the next iteration
-        if (index > 0 && number == nums[index - 1]) {
+    for(index in 0 until nums.size) {
+        if(index > 0 && nums[index] == nums[index - 1]) {
             continue
         }
 
         var left = index + 1
         var right = nums.size - 1
 
-        while (left < right) {
-            val sum = number + nums[left] + nums[right]
-            when {
-                sum > 0 -> {
-                    right--
-                }
+        while(left < right) {
+            val sum = nums[index] + nums[left] + nums[right]
 
-                sum < 0 -> {
+            if(sum > 0) {
+                right--
+            } else if (sum < 0) {
+                left++
+            } else {
+                val l = listOf(nums[index], nums[left], nums[right])
+                list.add(l)
+
+                left++
+
+                while (nums[left] == nums[left - 1] && left < right) {
                     left++
                 }
 
-                else -> {
-                    finalList.add(listOf(number, nums[left], nums[right]))
-                    left++
-                    right--
-
-                    // We don't want to check duplicate left value.
-                    // Notice: we are not changing `number` value when we are on while loop
-                    while (left < right && nums[left] == nums[left - 1]) {
-                        left++
-                    }
-                }
             }
         }
     }
 
-    return finalList
+    return list
 }

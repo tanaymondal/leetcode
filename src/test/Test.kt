@@ -7,9 +7,15 @@ fun main() {
 
     //println(isItPalindrome(13321))
 
-    for (index in (0 until 15).reversed()) {
-        println(index)
-    }
+//    for (index in (0 until 15).reversed()) {
+//        println(index)
+//    }
+
+    val list = mutableListOf(1,2,3)
+    val set = HashSet<List<Int>>()
+    set.add(list)
+    set.add(list)
+    println(set)
 }
 
 
