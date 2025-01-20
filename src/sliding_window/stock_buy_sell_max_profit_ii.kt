@@ -13,7 +13,7 @@ object stock_buy_sell_max_profit_ii {
         for (index in 1 until array.size) {
             val currentProfit = array[index] - array[index - 1]
             if (currentProfit > 0) {
-                maxProfit = currentProfit.coerceAtLeast(maxProfit)
+                maxProfit += currentProfit
             }
         }
         return maxProfit
