@@ -8,9 +8,22 @@ fun compute(a: Int, b: Int, add: (Int, Int) -> Unit) {
 
 fun main() {
 
-    compute(2, 3) { a: Int, b: Int ->
-        println(a + b)
+    val list1 = listOf(2, 4, 3, 5, 6)
+    val list2 = listOf(1, 3, 7, 8, 9)
+    val data = list1.fold(5) { acc, i ->
+        acc + i
     }
+
+    val m = list1.reduce { acc, i ->
+        acc + i
+    }
+
+    println(data)
+    println(m)
+
+//    compute(2, 3) { a: Int, b: Int ->
+//        println(a + b)
+//    }
 
 
     //println(Height(6) square Width(6))
@@ -34,24 +47,48 @@ fun main() {
     val map = mutableMapOf<Char, Int>()
     val map1 = mutableMapOf<Int, Char>()
 
-    var start = 0
+    var start = 1
     for (i in 'a'..'z') {
         map[i] = start
         map1[start] = i
         start++
     }
 
+    val set = mutableSetOf<Int>()
 
-    for (i in 1 until 26) {
-        val random1 = (1..26).random()
-        val random2 = (1..26).random()
+    for (i in 1..26) {
+
+        var random1 = getRandom()
+        while (true) {
+            if (!set.contains(random1)) {
+                break
+            }
+            random1 = getRandom()
+        }
+        set.add(random1)
+
+
+        var random2 = getRandom()
+        while (true) {
+            if (!set.contains(random2)) {
+                break
+            }
+            random2 = getRandom()
+        }
+        set.add(random2)
 
         val value1 = map1[random1]
         val value2 = map1[random2]
 
-        map[value1!!] = random1
-        map[value2!!] = random2
+        map[value1!!] = random2
+        map[value2!!] = random1
     }
+
+    println(map)
+}
+
+fun getRandom(): Int {
+    return (1..25).random()
 }
 
 fun fact(number: Int): BigInteger {
